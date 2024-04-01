@@ -1,4 +1,4 @@
-package com.jufarangoma.marvelcompose.ui.theme
+package com.jufarangoma.marvelcompose.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

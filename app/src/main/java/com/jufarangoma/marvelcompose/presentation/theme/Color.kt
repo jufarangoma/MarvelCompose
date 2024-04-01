@@ -1,4 +1,4 @@
-package com.jufarangoma.marvelcompose.ui.theme
+package com.jufarangoma.marvelcompose.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
