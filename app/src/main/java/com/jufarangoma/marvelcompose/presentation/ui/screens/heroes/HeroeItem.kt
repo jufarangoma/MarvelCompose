@@ -1,4 +1,4 @@
-package com.jufarangoma.marvelcompose.presentation.ui.screens
+package com.jufarangoma.marvelcompose.presentation.ui.screens.heroes
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -20,13 +20,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.jufarangoma.marvelcompose.domain.entities.Heroe
-import com.jufarangoma.marvelcompose.presentation.models.HeroeSerializable
+import com.jufarangoma.marvelcompose.domain.entities.Hero
+import com.jufarangoma.marvelcompose.presentation.models.HeroSerializable
 
 @Composable
 fun HeroeItem(
-    heroe: Heroe,
-    heroeClicked: (heroe: HeroeSerializable) -> Unit
+    hero: Hero,
+    heroeClicked: (heroe: HeroSerializable) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -34,7 +34,7 @@ fun HeroeItem(
             .width(240.dp)
             .padding(8.dp)
             .clickable {
-                heroeClicked(HeroeSerializable(heroe.id, heroe.name))
+                heroeClicked(HeroSerializable(hero.id, hero.name))
             }
     ) {
         Column {
@@ -42,13 +42,13 @@ fun HeroeItem(
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.bodyLarge,
-                text = heroe.name,
+                text = hero.name,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(heroe.image)
+                    .data(hero.image)
                     .crossfade(true)
                     .build(),
                 contentDescription = null,

@@ -1,15 +1,15 @@
 package com.jufarangoma.marvelcompose.data.models
 
-import com.jufarangoma.marvelcompose.domain.entities.Heroe
+import com.jufarangoma.marvelcompose.domain.entities.Hero
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 
-data class HeroeLocal(
+data class HeroLocal(
     val id: Long,
     val name: String,
     val thumbnail: Thumbnail
 ) {
-    fun toDomain() = Heroe(
+    fun toDomain() = Hero(
         id = id,
         name = name,
         image = thumbnail.toDomainThumbnail()
