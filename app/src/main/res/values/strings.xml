@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MarvelCompose</string>
+    <string name="app_name">MarvelWiki</string>
+    <string name="start">Avanzar</string>
 </resources>
