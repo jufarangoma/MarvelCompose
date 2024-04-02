@@ -15,6 +15,7 @@ retrofit-converter-gson = "2.9.0"
 hilt-android = "2.48.1"
 hilt-navigation-compose = "1.2.0"
 coil-compose = "2.2.2"
+lifecycle-runtime-compose = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +34,8 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
+androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-runtime-compose" }
+
 
 # Retrofit2
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
