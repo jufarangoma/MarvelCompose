@@ -35,7 +35,7 @@ fun FirstScreen(
         ElevatedButton(
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onPrimaryContainer),
-            onClick = { navigateToScreen(Screens.SuperHeroesScreen.name) }) {
+            onClick = { navigateToScreen(Screens.HeroesScreen.name) }) {
             Text(
                 stringResource(id = R.string.start),
             )
