@@ -1,4 +1,4 @@
-package com.jufarangoma.marvelcompose.presentation.ui.screens
+package com.jufarangoma.marvelcompose.presentation.ui.screens.heroes
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,9 +25,9 @@ fun HeroesScreen(
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        items((heroeStates as? HeroeStates.Success)?.heroes.orEmpty()) { heroe ->
-            HeroeItem(heroe = heroe ) {
-                navigateToScreen.invoke(Screens.FirstScreen.name)
+        items((heroeStates as? HeroeStates.Success)?.heroes.orEmpty()) { hero ->
+            HeroeItem(hero = hero ) {
+                navigateToScreen.invoke(Screens.ComicsScreen.name + "/${it.name}" + "/${it.id}")
             }
         }
     }

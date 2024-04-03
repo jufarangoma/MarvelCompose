@@ -72,6 +72,9 @@ dependencies {
     kapt(libs.hilt.dagger)
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockk.io)
+    testImplementation(libs.org.jetbrains.kotlinx)
+    testImplementation(libs.org.jetbrains.kotlinx.test)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

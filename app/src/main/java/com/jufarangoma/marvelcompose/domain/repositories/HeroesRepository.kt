@@ -1,7 +1,7 @@
 package com.jufarangoma.marvelcompose.domain.repositories
 
-import com.jufarangoma.marvelcompose.domain.entities.Heroe
+import com.jufarangoma.marvelcompose.domain.entities.Hero
 
 interface HeroesRepository {
-    fun getHeroes(): List<Heroe>
+    fun getHeroes(): List<Hero>
 }

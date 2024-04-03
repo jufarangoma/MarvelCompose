@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This file is only for debug, this keys doesn't have upload to repository-->
+<resources>
+    <string name="MARVEL_PUBLIC_API_KEY" translatable="false">540385ef614fa011d94f9c618bc38f92</string>
+    <string name="MARVEL_PRIVATE_API_KEY" translatable="false">69ce8cffbe0ac7e108d48ad53429aee558b9f865</string>
+</resources>
