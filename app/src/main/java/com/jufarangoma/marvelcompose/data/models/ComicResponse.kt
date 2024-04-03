@@ -3,21 +3,23 @@ package com.jufarangoma.marvelcompose.data.models
 import com.jufarangoma.marvelcompose.domain.entities.Comic
 
 data class ComicResponse(
-    val data: DataResponse
+    val data: DataResponse?
 )
 
 data class DataResponse(
-    val results: List<ComicDTO>
+    val results: List<ComicDTO>?
 )
 
 data class ComicDTO(
-    val title: String,
-    val description: String,
-    val thumbnail: Thumbnail
+    val id: Long,
+    val title: String?,
+    val description: String?,
+    val thumbnail: Thumbnail?
 ) {
     fun toDomainComic() = Comic(
-        title = title,
-        description = description,
-        image = thumbnail.toDomainThumbnail()
+        id = id,
+        title = title ?: String(),
+        description = description ?: String(),
+        image = thumbnail?.toDomainThumbnail()
     )
 }

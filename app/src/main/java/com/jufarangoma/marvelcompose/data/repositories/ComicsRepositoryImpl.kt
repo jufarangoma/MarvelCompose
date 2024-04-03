@@ -11,12 +11,12 @@ import kotlinx.coroutines.flow.flow
 class ComicsRepositoryImpl(
     private val marvelApi: MarvelApi,
     private val domainExceptionStrategy: DomainExceptionStrategy
-) : ComicsRepository{
+) : ComicsRepository {
     override fun getComics(heroId: Long): Flow<Result<List<Comic>>> =
         flow {
             val comicResponse = marvelApi.getComics(heroId)
-            val comics = comicResponse.data.results.map { it.toDomainComic() }
-            emit(Result.success(comics))
+            val comics = comicResponse.data?.results?.map { it.toDomainComic() }
+            emit(Result.success(comics ?: listOf()))
         }.catch {
             emit(Result.failure(domainExceptionStrategy.manageError(it)))
         }
