@@ -2,6 +2,7 @@ package com.jufarangoma.marvelcompose.di
 
 import android.content.Context
 import com.jufarangoma.marvelcompose.R
+import com.jufarangoma.marvelcompose.data.remote.MarvelApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -83,6 +84,9 @@ object NetworkModule {
             .baseUrl(MARVEL_BASE_URL)
             .build()
     }
+
+    @Provides
+    fun getMarvelApi(retrofit: Retrofit): MarvelApi = retrofit.create(MarvelApi::class.java)
 
 }
 

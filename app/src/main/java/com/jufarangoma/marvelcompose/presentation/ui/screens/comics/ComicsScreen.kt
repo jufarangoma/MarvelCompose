@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.jufarangoma.marvelcompose.R
+import com.jufarangoma.marvelcompose.presentation.navigation.Screens
 import com.jufarangoma.marvelcompose.presentation.ui.states.ComicStates
 import com.jufarangoma.marvelcompose.presentation.ui.viewmodels.ComicsViewModel
 
@@ -63,7 +64,7 @@ fun ComicsScreen(
             when (it) {
                 is ComicStates.Loading -> Loading()
                 is ComicStates.Success -> ComicList(heroComicsState = heroComicsState) {
-                    navigateToScreen.invoke(it)
+                    navigateToScreen.invoke(Screens.ComicDetailScreen.name + "/$it")
                 }
                 is ComicStates.Error -> ErrorView((heroComicsState as ComicStates.Error).message)
             }

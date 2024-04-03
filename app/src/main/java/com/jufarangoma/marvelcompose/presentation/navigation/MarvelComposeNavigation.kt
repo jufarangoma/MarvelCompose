@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.jufarangoma.marvelcompose.presentation.ui.screens.FirstScreen
+import com.jufarangoma.marvelcompose.presentation.ui.screens.comicDetail.ComicDetailScreen
 import com.jufarangoma.marvelcompose.presentation.ui.screens.comics.ComicsScreen
 import com.jufarangoma.marvelcompose.presentation.ui.screens.heroes.HeroesScreen
 
@@ -43,6 +44,17 @@ fun MarvelComposeNavigation() {
             ) { route ->
                 navController.navigate(route)
             }
+        }
+        composable(
+            route = Screens.ComicDetailScreen.name + "/{comicId}",
+            arguments = listOf(
+                navArgument(name = "comicId") { type = NavType.LongType }
+            )
+        ) {
+            ComicDetailScreen(
+                comicDetailViewModel = hiltViewModel(),
+                comicId = it.arguments?.getLong("comicId") ?: 0
+            )
         }
     }
 }
