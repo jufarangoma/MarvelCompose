@@ -39,7 +39,7 @@ fun ComicsScreen(
     val heroComicsState by comicsViewModel.comicsState.collectAsStateWithLifecycle()
 
     LaunchedEffect(key1 = Unit) {
-        comicsViewModel.getSuperHeroComics(heroId)
+        comicsViewModel.getComics(heroId)
     }
 
     Column {
