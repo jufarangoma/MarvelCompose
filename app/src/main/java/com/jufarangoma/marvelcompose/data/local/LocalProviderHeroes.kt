@@ -12,7 +12,8 @@ class LocalProviderHeroes(
 ) {
     fun getHeroes(): List<Hero> {
         val listType: Type = object : TypeToken<List<HeroLocal?>?>() {}.type
-        val objectArrayString: String = context.assets.open("menu.json").bufferedReader().use { it.readText() }
+        val objectArrayString: String =
+            context.assets.open("menu.json").bufferedReader().use { it.readText() }
         val objectArray: List<HeroLocal?> = Gson().fromJson(objectArrayString, listType)
         return objectArray.mapNotNull { it?.toDomain() }
     }
