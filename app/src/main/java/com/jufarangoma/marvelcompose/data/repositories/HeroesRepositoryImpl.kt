@@ -13,7 +13,7 @@ class HeroesRepositoryImpl(
     private val marvelApi: MarvelApi,
     private val localProviderHeroes: LocalProviderHeroes,
     private val domainExceptionStrategy: DomainExceptionStrategy
-): HeroesRepository {
+) : HeroesRepository {
 
     override fun getHeroes(heroName: String?): Flow<Result<List<Hero>>> = flow {
         val heroes = heroName?.let {

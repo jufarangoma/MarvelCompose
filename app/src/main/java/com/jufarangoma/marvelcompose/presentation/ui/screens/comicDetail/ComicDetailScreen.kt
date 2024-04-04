@@ -93,7 +93,7 @@ fun ComicDetail(comic: Comic) {
             )
         }
         item {
-            val description = if(comic.description.isNullOrEmpty()){
+            val description = if (comic.description.isNullOrEmpty()) {
                 stringResource(id = R.string.null_description)
             } else {
                 comic.description

@@ -10,7 +10,6 @@ data class Thumbnail(
     fun toDomainThumbnail(): HttpUrl {
         val httpsPath = if (path.startsWith("https")) path
         else path.replaceFirst("http", "https")
-
         return "$httpsPath.$extension".toHttpUrl()
     }
 }

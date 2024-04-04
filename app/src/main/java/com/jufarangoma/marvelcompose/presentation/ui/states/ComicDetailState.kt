@@ -6,6 +6,5 @@ sealed class ComicDetailState {
     object Loading : ComicDetailState()
     class Success(val comic: Comic) : ComicDetailState()
     object Error : ComicDetailState()
-
     object EmptyComic : ComicDetailState()
 }

@@ -2,7 +2,7 @@ package com.jufarangoma.marvelcompose.data.models
 
 import com.jufarangoma.marvelcompose.domain.entities.Hero
 
-data class HeroResponse (
+data class HeroResponse(
     val data: DataHeroResponse?
 )
 
