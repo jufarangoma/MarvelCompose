@@ -57,6 +57,7 @@ fun ComicDetailScreen(
             is ComicDetailState.Loading -> Loading()
             is ComicDetailState.Success -> ComicDetail(comic = it.comic)
             is ComicDetailState.Error -> ErrorView((it as ComicStates.Error).message)
+            is ComicDetailState.EmptyComic -> Text(text = stringResource(id = R.string.null_comic))
         }
     }
 }

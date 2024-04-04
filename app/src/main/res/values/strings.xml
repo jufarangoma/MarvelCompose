@@ -3,4 +3,5 @@
     <string name="start">Avanzar</string>
     <string name="default_error_message">Algo salio mal!</string>
     <string name="null_description">Esta descripción no esta disponible</string>
+    <string name="null_comic">Esta información no esta disponible en este momento\n</string>
 </resources>

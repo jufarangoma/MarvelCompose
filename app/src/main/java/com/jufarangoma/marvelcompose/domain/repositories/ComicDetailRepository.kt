@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ComicDetailRepository {
 
-    fun getComicDetail(comicId: Long): Flow<Result<Comic>>
+    fun getComicDetail(comicId: Long): Flow<Result<Comic?>>
 }

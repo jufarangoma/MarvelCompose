@@ -26,7 +26,11 @@ class ComicDetailViewModel @Inject constructor(
         comicDetailRepository.getComicDetail(comicId).map { result ->
             result.fold(
                 onSuccess = {
-                    _comicDetailState.value = ComicDetailState.Success(it)
+                    _comicDetailState.value = it?.let {
+                        ComicDetailState.Success(it)
+                    } ?: run {
+                        ComicDetailState.EmptyComic
+                    }
                 },
                 onFailure = {
                     _comicDetailState.value = ComicDetailState.Error
