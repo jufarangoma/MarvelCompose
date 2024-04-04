@@ -1,14 +1,14 @@
 # MarvelWiki
 
 
-Estructura del proyecto
+## Estructura del proyecto
 
 - data: Todas las implementaciones a los repositorios, objetos DTO y endpoints
 - domain: Entidades, repositorios y excepciones de dominio
 - presentation: Actividad, fragmentos, adaptadores y viewmodels
 - di: Modules de inyección
 
-Librerias utilizadas
+## Librerias utilizadas
 
 - Navigation Compose
 - Coroutines
