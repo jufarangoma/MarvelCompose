@@ -66,6 +66,7 @@ fun ComicsScreen(
                 is ComicStates.Success -> ComicList(heroComicsState = heroComicsState) {
                     navigateToScreen.invoke(Screens.ComicDetailScreen.name + "/$it")
                 }
+
                 is ComicStates.Error -> ErrorView((heroComicsState as ComicStates.Error).message)
             }
         }
@@ -74,7 +75,7 @@ fun ComicsScreen(
 }
 
 @Composable
-fun ErrorView(message: String?) {
+fun ErrorView(message: String? = null) {
     Text(
         modifier = Modifier.fillMaxSize(),
         text = message ?: stringResource(id = R.string.default_error_message)
@@ -87,7 +88,7 @@ fun Loading() {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ){
+    ) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(32.dp)
