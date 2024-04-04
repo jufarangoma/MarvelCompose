@@ -1,16 +1,18 @@
 package com.jufarangoma.marvelcompose.di
 
-import android.content.Context
-import com.jufarangoma.marvelcompose.data.repositories.HeroesLocalRepository
+import com.jufarangoma.marvelcompose.data.local.LocalProviderHeroes
+import com.jufarangoma.marvelcompose.data.remote.MarvelApi
+import com.jufarangoma.marvelcompose.data.repositories.HeroesRepositoryImpl
+import com.jufarangoma.marvelcompose.domain.repositories.DomainExceptionStrategy
 import com.jufarangoma.marvelcompose.domain.repositories.HeroesRepository
-import com.jufarangoma.marvelcompose.presentation.ui.states.HeroeStates
+import com.jufarangoma.marvelcompose.presentation.ui.states.HeroStates
 import com.jufarangoma.marvelcompose.presentation.ui.viewmodels.HeroesViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Named
 
@@ -18,20 +20,26 @@ import javax.inject.Named
 @InstallIn(ViewModelComponent::class)
 object HomeModule {
 
-    @Named(LOCAL_HEROE_REPOSITORY)
     @Provides
     @ViewModelScoped
-    fun getLocalHeroeRepository(
-        @ApplicationContext appContext: Context
-    ): HeroesRepository = HeroesLocalRepository(context = appContext)
+    fun getHeroesRepository(
+        marvelApi: MarvelApi,
+        localProviderHeroes: LocalProviderHeroes,
+        @Named(EXCEPTION_COMMON_STRATEGY) domainExceptionStrategy: DomainExceptionStrategy
+    ): HeroesRepository = HeroesRepositoryImpl(
+        marvelApi,
+        localProviderHeroes,
+        domainExceptionStrategy
+    )
 
     @Provides
     fun getHeroesViewModel(
-        @Named(LOCAL_HEROE_REPOSITORY) getLocalRepository: HeroesRepository
+        getHeroesRepository: HeroesRepository,
+        coroutineDispatcher: CoroutineDispatcher
     ) = HeroesViewModel(
-        heroesRepository = getLocalRepository,
-        _heroesState = MutableStateFlow(HeroeStates.Loading)
+        heroesRepository = getHeroesRepository,
+        _heroesState = MutableStateFlow(HeroStates.Loading),
+        coroutineDispatcher
     )
 }
 
-private const val LOCAL_HEROE_REPOSITORY = "localHeroeRepository"

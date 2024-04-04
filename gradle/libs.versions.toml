@@ -19,6 +19,7 @@ lifecycle-runtime-compose = "2.7.0"
 mockk-version = "1.13.7"
 coroutines-core = "1.7.3"
 
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -37,6 +38,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
 androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-runtime-compose" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 
 # Retrofit2

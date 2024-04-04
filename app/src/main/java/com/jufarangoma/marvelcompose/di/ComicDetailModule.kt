@@ -1,7 +1,7 @@
 package com.jufarangoma.marvelcompose.di
 
 import com.jufarangoma.marvelcompose.data.remote.MarvelApi
-import com.jufarangoma.marvelcompose.data.repositories.ComicDetailExceptionStrategy
+import com.jufarangoma.marvelcompose.data.repositories.CommonExceptionStrategy
 import com.jufarangoma.marvelcompose.data.repositories.ComicDetailRepositoryImpl
 import com.jufarangoma.marvelcompose.domain.repositories.ComicDetailRepository
 import com.jufarangoma.marvelcompose.domain.repositories.DomainExceptionStrategy
@@ -20,16 +20,11 @@ import javax.inject.Named
 @InstallIn(ViewModelComponent::class)
 object ComicDetailModule {
 
-    @Named(EXCEPTION_COMIC_DETAIL_STRATEGY)
-    @Provides
-    @ViewModelScoped
-    fun getExceptionComicDetailStrategy(): DomainExceptionStrategy = ComicDetailExceptionStrategy()
-
     @Provides
     @ViewModelScoped
     fun getComicDetailRepository(
         marvelApi: MarvelApi,
-        @Named(EXCEPTION_COMIC_DETAIL_STRATEGY) exceptionComicDetail: DomainExceptionStrategy
+        @Named(EXCEPTION_COMMON_STRATEGY) exceptionComicDetail: DomainExceptionStrategy
     ): ComicDetailRepository = ComicDetailRepositoryImpl(marvelApi, exceptionComicDetail)
 
     @Provides
@@ -42,5 +37,3 @@ object ComicDetailModule {
         coroutineDispatcher
     )
 }
-
-private const val EXCEPTION_COMIC_DETAIL_STRATEGY = "exceptionComicsDetailStrategy"
