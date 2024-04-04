@@ -1,7 +1,6 @@
 package com.jufarangoma.marvelcompose.di
 
 import com.jufarangoma.marvelcompose.data.remote.MarvelApi
-import com.jufarangoma.marvelcompose.data.repositories.CommonExceptionStrategy
 import com.jufarangoma.marvelcompose.data.repositories.ComicDetailRepositoryImpl
 import com.jufarangoma.marvelcompose.domain.repositories.ComicDetailRepository
 import com.jufarangoma.marvelcompose.domain.repositories.DomainExceptionStrategy

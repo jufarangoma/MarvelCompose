@@ -22,10 +22,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.jufarangoma.marvelcompose.R
 import com.jufarangoma.marvelcompose.domain.entities.Hero
 import com.jufarangoma.marvelcompose.presentation.navigation.Screens
 import com.jufarangoma.marvelcompose.presentation.ui.screens.comics.ErrorView
@@ -41,7 +43,7 @@ fun HeroesScreen(
     val heroesStates by heroesViewModel.heroStates.collectAsStateWithLifecycle()
     val textState = remember { mutableStateOf(TextFieldValue()) }
 
-    LaunchedEffect(key1 = Unit) {
+    LaunchedEffect(Unit) {
         heroesViewModel.getHeroes()
     }
 
@@ -63,9 +65,16 @@ fun HeroesScreen(
         ) {
             when (it) {
                 is HeroStates.Loading -> Loading()
-                is HeroStates.Success -> ListHeroes(heroes = it.heroes) {
-                    navigateToScreen.invoke(Screens.ComicsScreen.name + it)
+                is HeroStates.Success -> {
+                    if (it.heroes.isEmpty()) {
+                        Text(text = stringResource(id = R.string.empty_list_heroes))
+                    } else {
+                        ListHeroes(heroes = it.heroes) {
+                            navigateToScreen.invoke(Screens.ComicsScreen.name + it)
+                        }
+                    }
                 }
+
                 is HeroStates.Error -> ErrorView()
             }
         }
@@ -90,8 +99,7 @@ fun SearchHero(
         placeholder = { Text(text = "Escribe le nombre de tu heroe") },
         keyboardActions = KeyboardActions(
             onDone = {
-                val encodedName = textState.value.text.replace(" ", "%20")
-                heroesViewModel.getHeroes(encodedName)
+                heroesViewModel.getHeroes(textState.value.text)
             }
         )
     )
