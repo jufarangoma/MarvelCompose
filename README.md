@@ -1,5 +1,10 @@
 # MarvelWiki
 
+Esta es una app de android desarrollada con compose para visualizar una wiki de personajes de marvel, esta app perimite:
+
+- Buscar personajes de marvel
+- Ver los comics en los que ha participado un personaje
+- ver un detalle del comic
 
 ## Estructura del proyecto
 
