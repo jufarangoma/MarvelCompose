@@ -19,7 +19,7 @@ data class ComicDTO(
     fun toDomainComic() = Comic(
         id = id,
         title = title ?: String(),
-        description = description ?: String(),
+        description = description,
         image = thumbnail?.toDomainThumbnail()
     )
 }

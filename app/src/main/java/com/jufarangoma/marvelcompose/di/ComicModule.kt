@@ -14,16 +14,11 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
-import retrofit2.Retrofit
 import javax.inject.Named
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object ComicModule {
-
-    @Provides
-    @ViewModelScoped
-    fun getMarvelApi(retrofit: Retrofit): MarvelApi = retrofit.create(MarvelApi::class.java)
 
     @Named(EXCEPTION_COMIC_STRATEGY)
     @Provides
@@ -34,8 +29,8 @@ object ComicModule {
     @ViewModelScoped
     fun getComicsRepository(
         marvelApi: MarvelApi,
-        @Named(EXCEPTION_COMIC_STRATEGY) exceptionSuperHeroComic: DomainExceptionStrategy
-    ): ComicsRepository = ComicsRepositoryImpl(marvelApi, exceptionSuperHeroComic)
+        @Named(EXCEPTION_COMIC_STRATEGY) exceptionComics: DomainExceptionStrategy
+    ): ComicsRepository = ComicsRepositoryImpl(marvelApi, exceptionComics)
 
     @Provides
     fun getComicsViewModel(

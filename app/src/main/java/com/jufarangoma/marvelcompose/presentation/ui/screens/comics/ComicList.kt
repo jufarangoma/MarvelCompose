@@ -26,7 +26,7 @@ import com.jufarangoma.marvelcompose.presentation.ui.states.ComicStates
 @Composable
 fun ComicList(
     heroComicsState: ComicStates,
-    navigateToScreen: (String) -> Unit
+    navigateToScreen: (Long) -> Unit
 ) {
 
     LazyVerticalStaggeredGrid(
@@ -51,12 +51,12 @@ fun ComicList(
 @Composable
 fun ComicItem(
     comic: Comic,
-    navigateToScreen: (String) -> Unit
+    navigateToScreen: (Long) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(10.dp),
         elevation = CardDefaults.cardElevation(5.dp),
-        onClick = { navigateToScreen(comic.id.toString()) }
+        onClick = { navigateToScreen(comic.id) }
     ) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
